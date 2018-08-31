@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <style>
+        #image {
+            width: 200px;
+            height: 200px;
+        }
+        #dialog {
+            display: none;
+        }
+        .ui-dialog {
+            border: 1px solid green;
+            border-radius: 5px;
+        }
+        .ui-widget-header {
+            border: 0px;
+            background: transparent;
+        }
+        .ui-dialog-title {
+            visibility: hidden;
+        }
+        #canvas {
+            flex: 1;
+        }
+        #dialog aside{
+            flex: auto;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            border-left: 2px solid green;
+            padding: 2em;
+            line-height: .1em;
+        }
+        #dialog aside h1 {
+            margin-bottom: 2em;
+        }
+    </style>
+</head>
+<body>
+    <img id="image" src="pic/031.jpg" alt="图片">
+    <div id="dialog" title="弹窗">
+        <div id='canvas'>
+            <canvas id='real-canvas' width="600" height="500"></canvas>
+        </div>
+        <aside>
+            <h1>模型名称</h1>
+            <p>文件大小：23KB</p>
+            <p>文件名称： 1.psb</p>
+            <p>蛋白质类别： P161NK4A</p>
+            <p>构象结构数量： 38</p>
+        </aside>
+    </div>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="js/three.js"></script>
+    <script src="js/OBJLoader.js"></script>
+    <script src="js/OrbitControls.js"></script>
+    <script src="js/DialogShow.js"></script>
+    <script>
+        $(document).ready(function(){
+            var dialogShow = new DialogShow('real-canvas', 0xeeeeee, 'pic/model_002162.obj', 20, '神马细胞');
+            $('#image').click(function(){
+                dialogShow.showDialog();
+                dialogShow.init();
+            });
+        });
+    </script>
+</body>
+</html>
